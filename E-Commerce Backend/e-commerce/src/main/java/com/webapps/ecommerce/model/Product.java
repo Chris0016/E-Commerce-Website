@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Table(name = "products")
 // @SecondaryTable(name = "categories")
 // @SecondaryTable(name = "vendors")
-public class Products {
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -34,7 +34,7 @@ public class Products {
     @Column(name = "vendor")
     private String vendorName;
 
-    public Products(Long id, String prodName, String category, Long price, String description, String vendorName) {
+    public Product(Long id, String prodName, String category, Long price, String description, String vendorName) {
         this.id = id;
         this.prodName = prodName;
         this.category = category;
@@ -43,7 +43,7 @@ public class Products {
         this.vendorName = vendorName;
     }
 
-    public Products() {
+    public Product() {
     }
 
     public Long getId() {
