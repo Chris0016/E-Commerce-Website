@@ -31,7 +31,7 @@ public class Product {
 
     // Create Secondary table with list of vendors and have this column be in link.
     // and also change to vendor_ID
-    @Column(name = "vendor")
+    @Column(name = "vendor_name")
     private String vendorName;
 
     public Product(Long id, String prodName, String category, Long price, String description, String vendorName) {

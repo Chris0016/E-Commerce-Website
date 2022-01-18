@@ -6,9 +6,17 @@ import AboutUsComponent from "./components/AboutUsComponent";
 import ContactUsComponent from "./components/ContactUsComponent";
 
 import React, { Component } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter,
+  BrowserRouter as Router,
+  Route,
+  Switch,
+} from "react-router-dom";
 import SlideShowComponent from "./components/SlideShowComponent";
 import ProductViewComponent from "./components/ProductViewComponent";
+import ProductGridComponent from "./components/Products Display/ProductGridComponent";
+import ProductsDisplayComponent from "./components/Products Display/ProductsDisplayComponent";
+import SideBarComponent from "./components/Products Display/SideBarComponent";
 function App() {
   return (
     <div className="App">
@@ -16,24 +24,22 @@ function App() {
         <NavBarComponent />
       </div>
       <>
-        <BrowserRouter>
+        <Router>
           <Switch>
-            <Route path="/product/1">
-              <ProductViewComponent />
-            </Route>
-            <Route path="/contact">
-              <ContactUsComponent />
-            </Route>
+            <Route exact path="/sidebar" component={SideBarComponent} />
 
-            <Route path="/about-us">
-              <AboutUsComponent />
-            </Route>
+            <Route
+              exact
+              path="/products/:category"
+              component={ProductViewComponent}
+            />
 
-            <Route path="/">
-              <HomeComponent />
-            </Route>
+            <Route exact path="/product/:id" component={ProductViewComponent} />
+            <Route exact path="/contact" component={ContactUsComponent} />
+            <Route exact path="/about-us" component={AboutUsComponent} />
+            <Route exact path="/" component={HomeComponent} />
           </Switch>
-        </BrowserRouter>
+        </Router>
       </>
       {/* <Switch> */}
       {/* <Route
@@ -49,7 +55,27 @@ function App() {
             render={(routeProps) => <AboutUsComponent {...routeProps} />}
           /> */}
       {/* </Switch> */}
+      {/*
+            <Route exact path="/">
+              <HomeComponent />
+            </Route>
 
+            <Route exact path="/products/:category">
+             <ProductGridComponent />
+            </Route>
+            <Route exact path="/product/1">
+              <ProductViewComponent />
+            </Route>
+            <Route exact path="/contact">
+              <ContactUsComponent />
+            </Route>
+
+            <Route exact path="/about-us">
+              <AboutUsComponent />
+            </Route>
+ 
+
+*/}
       <FooterComponent />
     </div>
   );

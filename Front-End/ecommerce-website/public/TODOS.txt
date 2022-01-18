@@ -1,0 +1,8 @@
+Navbar Dropdown functionality with categories
+Product page sideBar component
+Create custom program to populate database with pseudo data. 
+
+Table:
+    Categories:
+        Category Title, Picture Link, Other text
+    ->  Dynamically render categories to home pages categories grid based on table. 

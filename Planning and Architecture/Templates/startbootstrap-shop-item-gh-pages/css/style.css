@@ -1,0 +1,251 @@
+body {
+  color: #7f7f7f !important;
+}
+h1,
+h2,
+h3,
+h4,
+h6,
+strong {
+  color: #000 !important;
+}
+main {
+  padding: 50px 0;
+}
+p {
+  margin: 0px !important;
+  padding: 0px !important;
+}
+a {
+  text-decoration: none !important;
+}
+/*---SLIDER---*/
+.carousel-indicators {
+  position: static !important;
+  width: 100%;
+  margin: 15px auto !important ;
+  background: #f7f7f7;
+  padding: 10px !important;
+}
+.carousel-indicators [data-bs-target] {
+  width: auto !important;
+  height: auto !important;
+}
+.carousel-indicators,
+.carousel-indicators [data-bs-target],
+.carousel-item {
+  border: 1px solid #ccc !important;
+}
+.carousel-indicators [data-bs-target].active {
+  border: 1px solid #777 !important;
+}
+.carousel-control-next,
+.carousel-control-prev {
+  background: #0d6efd4f !important;
+  opacity: 1 !important;
+  width: 40px !important;
+  height: 40px !important;
+  top: 30% !important;
+}
+/*---SLIDER END---*/
+.product-meta {
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 30px;
+}
+.rating {
+  border-left: 1px solid #eee;
+  padding: 0 5px 0 15px;
+  margin-left: 15px;
+}
+.rating i {
+  color: gold;
+}
+.price {
+  margin: 20px 0;
+}
+.product-info ul {
+  padding: 0;
+  list-style: square inside;
+}
+.variations div[class^='color-'] a {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: block;
+  margin-right: 5px;
+}
+.color-1 a {
+  background: brown;
+}
+.color-2 a {
+  background: gray;
+}
+.services {
+  background: #f7f7f7;
+  padding: 15px;
+  font-size: 14px;
+}
+.services i {
+  font-size: 18px;
+  padding: 0px;
+  color: #000;
+}
+.services .row {
+  margin: 15px 0;
+  padding: 0 0 15px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+.services .row:last-child {
+  border-bottom: 0;
+  padding-bottom: 0px;
+}
+.add-to-cart {
+  padding: 15px 0 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.add-to-cart button {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.quantity {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid #eee;
+  justify-content: space-between;
+  padding: 0px !important;
+}
+.quantity input {
+  width: 40px;
+  text-align: center;
+}
+.quantity input:focus,
+.quantity button:focus,
+.quantity input,
+.quantity button {
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+  height: 30px;
+  font-size: 20px;
+  padding: 0px !important;
+  height: 100%;
+}
+.quantity button {
+  width: 45px !important;
+  transition: all 0.2s ease-in-out;
+}
+.quantity button:hover {
+  background: #000;
+  color: #fff;
+}
+.btn {
+  border-radius: 2px !important;
+}
+.nav-tabs .nav-item a {
+  font-weight: 600;
+}
+.tab-pane h4,
+table {
+  margin-top: 30px !important;
+}
+ul {
+  margin-top: 20px !important;
+}
+.rating-bar,
+.overall-rating {
+  display: flex;
+  align-items: center;
+}
+#reviews,
+#qa {
+  padding-top: 30px;
+}
+.rating-bar {
+  padding: 5px 0;
+}
+.rating-bar span {
+  width: 15%;
+}
+.rating-bar .progress {
+  width: 70%;
+  margin: 0 5px;
+}
+.progress-bar {
+  background-color: gold !important;
+}
+.rate-product div[class^='col-md-'] {
+  margin-top: 15px;
+}
+.rate-product h4 {
+  margin-top: 0 !important;
+  margin-bottom: 30px;
+}
+.rate-product textarea,
+.rate-product input {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  padding: 5px 15px;
+}
+.rate-product textarea::placeholder,
+.rate-product input::placeholder {
+  color: #ddd;
+}
+.rate-product textarea {
+  height: 150px;
+}
+.rate-product input {
+  height: 35px;
+}
+@media (max-width: 768px) {
+  .add-to-cart {
+    flex-direction: column;
+  }
+  .add-to-cart button {
+    height: 40px;
+  }
+  .add-to-cart button.add-cart {
+    margin: 15px 0 !important;
+  }
+}
+@media (max-width: 575px) {
+  main {
+    padding: 15px 0;
+  }
+  .product-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .rating {
+    margin: 0;
+    padding: 0;
+  }
+  .nav-tabs {
+    flex-direction: column;
+    padding: 0px !important;
+  }
+  .nav-tabs .nav-item,
+  .nav-tabs .nav-item .nav-tabs .nav-item.show .nav-link {
+    border: 1px solid #ccc !important;
+    border-bottom: 0px !important;
+  }
+  .nav-tabs .nav-link.active {
+    border: 0px !important;
+  }
+  .nav-tabs .nav-link:last-child.active {
+    border-bottom: 1px solid #ccc !important;
+  }
+  .services {
+    margin-top: 30px;
+  }
+  .row.mt-5 {
+    margin-top: 15px !important;
+  }
+}

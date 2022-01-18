@@ -1,0 +1,51 @@
+Reform Database:
+
+*Create a java application that will populate the database with random values* To save time
+
+Products:
+    Id
+    ProductName
+    Category(from Categories Table)
+    VendorName or VendorId(from Vendors Table)
+    price
+    description(impose character max)
+    rating
+    Dimension
+    Weight
+    Stock
+    Color1
+    Color2
+    Color3
+
+
+    tag1
+    tag2
+    tag3
+    tag4
+    tag5
+
+Vendors Table:
+    Id
+    VendorName
+    VendorType(what type of products does it sell) -> To be used in the product view page to display Information about the seller
+    NumberOfProducts
+    ProfileImage?
+
+Vendors Profile:
+    id
+    username
+    password
+    email
+    secondary email
+    phone 
+
+Categories Table:
+    Id
+    CategoryName
+
+
+
+V3-> Include Users:
+
+
+
