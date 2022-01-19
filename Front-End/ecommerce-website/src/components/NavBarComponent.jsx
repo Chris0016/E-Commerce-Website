@@ -34,31 +34,6 @@ class NavBarComponent extends React.Component {
               </a>
             </li>
 
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="/products"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Categories
-              </a>
-              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a className="dropdown-item" href="#">
-                  Computer
-                </a>
-                <a className="dropdown-item" href="#">
-                  Robotics
-                </a>
-                <div className="dropdown-divider"></div>
-                <a className="dropdown-item" href="#">
-                  Office {"&"} Home
-                </a>
-              </div>
-            </li>
             <li className="nav-item">
               <a className="nav-link" href="/about-us">
                 About Us

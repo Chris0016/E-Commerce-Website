@@ -30,7 +30,7 @@ class ProductGridComponent extends Component {
           <SideBarComponent />
           <div className="row" style={{ marginLeft: "5px" }}>
             {this.state.products.map((product) => (
-              <div className="col-md-3">
+              <div className="col col-md-3" style={{ marginTop: "5px" }}>
                 <div className="card">
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="d-flex flex-row align-items-center time">

@@ -1,5 +1,5 @@
-Navbar Dropdown functionality with categories
-Create custom program to populate database with pseudo data. 
+Sidebar Active Page(update blue thing)
+ 
 
 Table:
     Categories:
