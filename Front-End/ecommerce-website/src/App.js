@@ -12,10 +12,8 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-import SlideShowComponent from "./components/SlideShowComponent";
 import ProductViewComponent from "./components/ProductViewComponent";
 import ProductGridComponent from "./components/Products Display/ProductGridComponent";
-import ProductsDisplayComponent from "./components/Products Display/ProductsDisplayComponent";
 import SideBarComponent from "./components/Products Display/SideBarComponent";
 function App() {
   return (
