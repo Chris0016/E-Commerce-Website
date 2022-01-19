@@ -1,5 +1,4 @@
 Navbar Dropdown functionality with categories
-Product page sideBar component
 Create custom program to populate database with pseudo data. 
 
 Table:

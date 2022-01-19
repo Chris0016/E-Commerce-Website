@@ -20,7 +20,7 @@ import SideBarComponent from "./components/Products Display/SideBarComponent";
 function App() {
   return (
     <div className="App">
-      <div className="container">
+      <div className="container-fluid">
         <NavBarComponent />
       </div>
       <>
@@ -31,7 +31,7 @@ function App() {
             <Route
               exact
               path="/products/:category"
-              component={ProductViewComponent}
+              component={ProductGridComponent}
             />
 
             <Route exact path="/product/:id" component={ProductViewComponent} />

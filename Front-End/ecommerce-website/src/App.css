@@ -348,9 +348,9 @@ site-footer {
 }
 
 /* Sidebar Component */
-.nav-link:hover {
+/* .nav-link:hover {
   background-color: #525252 !important;
-}
+} */
 
 .nav-link .fa {
   transition: all 1s;
@@ -358,4 +358,10 @@ site-footer {
 
 .nav-link:hover .fa {
   transform: rotate(360deg);
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
 }
