@@ -12,7 +12,7 @@ class SideBarComponent extends Component {
           className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
         >
           <svg className="bi me-2" width="40" height="32"></svg>
-          <span className="fs-4">BBBootstrap</span>
+          <span className="fs-4">Categories</span>
         </a>
         <hr />
         <ul className="nav nav-pills flex-column mb-auto">
@@ -23,57 +23,60 @@ class SideBarComponent extends Component {
             </a>
           </li>
           <li>
-            <a href="#" className="nav-link text-white">
+            <a href="/products/Computers" className="nav-link text-white">
               <i className="fa fa-dashboard"></i>
               <span className="ms-2">Computers</span>
             </a>
           </li>
           <li>
-            <a href="#" className="nav-link text-white">
+            <a href="/products/Wearables" className="nav-link text-white">
               <i className="fa fa-first-order"></i>
               <span className="ms-2">Wearables</span>
             </a>
           </li>
           <li>
-            <a href="#" className="nav-link text-white">
+            <a href="/products/Robotics" className="nav-link text-white">
               <i className="fa fa-cog"></i>
               <span className="ms-2">Robotics</span>
             </a>
           </li>
           <li>
-            <a href="#" className="nav-link text-white">
+            <a href="/products/HomeAndOffice" className="nav-link text-white">
               <i className="fa fa-bookmark"></i>
-              <span className="ms-2">Office and Home</span>
+              <span className="ms-2">Home And Office</span>
             </a>
           </li>
           <li>
-            <a href="#" className="nav-link text-white">
+            <a href="/products/Software" className="nav-link text-white">
               <i className="fa fa-bookmark"></i>
               <span className="ms-2">Software</span>
             </a>
           </li>
           <li>
-            <a href="#" className="nav-link text-white">
+            <a href="/products/Photography" className="nav-link text-white">
               <i className="fa fa-bookmark"></i>
               <span className="ms-2">Photography</span>
             </a>
           </li>
 
           <li>
-            <a href="#" className="nav-link text-white">
+            <a href="/products/Networking" className="nav-link text-white">
               <i className="fa fa-bookmark"></i>
               <span className="ms-2">Networking</span>
             </a>
           </li>
           <li>
-            <a href="#" className="nav-link text-white">
-              <i className="fa fa-bookmark">Articles</i>
-              <span className="ms-2"></span>
+            <a href="/products/Articles" className="nav-link text-white">
+              <i className="fa fa-bookmark"></i>
+              <span className="ms-2"> Articles</span>
             </a>
           </li>
 
           <li>
-            <a href="#" className="nav-link text-white">
+            <a
+              href="/products/ServicesAndRepair"
+              className="nav-link text-white"
+            >
               <i className="fa fa-bookmark"></i>
               <span className="ms-2">Services and Repair</span>
             </a>
@@ -103,7 +106,7 @@ class SideBarComponent extends Component {
           >
             <li>
               <a className="dropdown-item" href="#">
-                New project
+                Shopping Cart
               </a>
             </li>
             <li>
