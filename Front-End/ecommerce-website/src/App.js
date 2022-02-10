@@ -6,77 +6,168 @@ import AboutUsComponent from "./components/AboutUsComponent";
 import ContactUsComponent from "./components/ContactUsComponent";
 
 import React, { Component } from "react";
-import {
-  BrowserRouter,
-  BrowserRouter as Router,
-  Route,
-  Switch,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ProductViewComponent from "./components/ProductViewComponent";
 import ProductGridComponent from "./components/Products Display/ProductGridComponent";
 import SideBarComponent from "./components/Products Display/SideBarComponent";
-function App() {
-  return (
-    <div className="App">
-      <div className="container-fluid">
-        <NavBarComponent />
+import ShoppingCartComponent from "./components/ShoppingCartComponent";
+
+class App extends Component {
+  userData;
+  constructor(props) {
+    super(props);
+    this.state = {
+      cart: [],
+    };
+    // this.handleAddToCart = this.handleAddToCart.bind(this);
+  }
+
+  handleAddToCart = (productId, prodName, description, price) => {
+    console.log(" Handle Add to Cart Called ", productId);
+
+    const holder = {
+      productId,
+      quantity: 1,
+      prodName,
+      description,
+      price,
+    };
+
+    const idx = this.indexOfProduct(productId);
+    // Product does not exist in cart
+    if (idx == -1) {
+      this.setState(
+        {
+          cart: [...this.state.cart, holder],
+        },
+        () => {
+          console.log("Updated Cart: ", this.state.cart);
+        }
+      );
+    } else {
+      let newArray = [...this.state.cart];
+      newArray[idx] = {
+        ...newArray[idx],
+        quantity: newArray[idx].quantity + 1,
+      };
+      this.setState(
+        {
+          cart: newArray,
+        },
+        () => {
+          console.log("Updated Cart: ", this.state.cart);
+        }
+      );
+    }
+  };
+
+  indexOfProduct(productId) {
+    for (let index = 0; index < this.state.cart.length; index++) {
+      if (this.state.cart[index].productId == productId) return index;
+    }
+    return -1;
+  }
+
+  // componentDidMount() {
+  //   this.userData = JSON.parse(localStorage.getItem("cart"));
+
+  //   if (localStorage.getItem("cart")) {
+  //     console.log("Found in local Storage");
+  //     this.setState(
+  //       {
+  //         cart: this.userData.cart,
+  //       },
+  //       () => {
+  //         console.log("cart state at mount: ", this.state.cart);
+  //       }
+  //     );
+  //   } else {
+  //     this.setState({
+  //       cart: [],
+  //     });
+  //   }
+  // }
+
+  // componentWillUpdate(nextProps, nextState) {
+  //   localStorage.setItem("cart", JSON.stringify(nextState));
+  // }
+
+  render() {
+    return (
+      <div className="App">
+        {/* <div className="container-fluid">
+          <NavBarComponent />
+        </div> */}
+        <>
+          <Router>
+            <div className="container-fluid">
+              <NavBarComponent />
+            </div>
+
+            <Switch>
+              <Route exact path="/sidebar">
+                <SideBarComponent />
+              </Route>
+              <Route exact path="/products/:category">
+                <ProductGridComponent />
+              </Route>
+              <Route exact path="/cart">
+                <ShoppingCartComponent cart={this.state.cart} />
+              </Route>
+              <Route exact path="/product/:id">
+                {/*onAddToCart={this.handleAddToCart} */}
+                <ProductViewComponent onAddToCart={this.handleAddToCart} />
+              </Route>
+
+              <Route exact path="/contact">
+                <ContactUsComponent />
+              </Route>
+
+              <Route exact path="/about-us">
+                <AboutUsComponent />
+              </Route>
+              <Route exact path="/">
+                <HomeComponent />
+              </Route>
+            </Switch>
+          </Router>
+        </>
+        <FooterComponent />
       </div>
-      <>
-        <Router>
-          <Switch>
-            <Route exact path="/sidebar" component={SideBarComponent} />
-
-            <Route
-              exact
-              path="/products/:category"
-              component={ProductGridComponent}
-            />
-
-            <Route exact path="/product/:id" component={ProductViewComponent} />
-            <Route exact path="/contact" component={ContactUsComponent} />
-            <Route exact path="/about-us" component={AboutUsComponent} />
-            <Route exact path="/" component={HomeComponent} />
-          </Switch>
-        </Router>
-      </>
-      {/* <Switch> */}
-      {/* <Route
-            path="/"
-            render={(routeProps) => <HomeComponent {...routeProps} />}
-          />
-          <Route
-            path="/contact"
-            render={(routeProps) => <ContactUsComponent {...routeProps} />}
-          />
-          <Route
-            path="/about-us"
-            render={(routeProps) => <AboutUsComponent {...routeProps} />}
-          /> */}
-      {/* </Switch> */}
-      {/*
-            <Route exact path="/">
-              <HomeComponent />
-            </Route>
-
-            <Route exact path="/products/:category">
-             <ProductGridComponent />
-            </Route>
-            <Route exact path="/product/1">
-              <ProductViewComponent />
-            </Route>
-            <Route exact path="/contact">
-              <ContactUsComponent />
-            </Route>
-
-            <Route exact path="/about-us">
-              <AboutUsComponent />
-            </Route>
- 
-
-*/}
-      <FooterComponent />
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <div className="container-fluid">
+//         <NavBarComponent />
+//       </div>
+//       <>
+//         <Router>
+//           <Switch>
+//             <Route exact path="/sidebar" component={SideBarComponent} />
+
+//             <Route
+//               exact
+//               path="/products/:category"
+//               component={ProductGridComponent}
+//             />
+//             <Route exact path="/cart" component={ShoppingCartComponent} />
+
+//             <Route exact path="/product/:id" component={ProductViewComponent} />
+//             <Route exact path="/contact" component={ContactUsComponent} />
+//             <Route exact path="/about-us" component={AboutUsComponent} />
+//             <Route exact path="/" component={HomeComponent} />
+//           </Switch>
+//         </Router>
+//       </>
+//       <FooterComponent />
+//     </div>
+//   );
+// }
+
+// export default App;

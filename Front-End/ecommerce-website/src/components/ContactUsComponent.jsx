@@ -39,7 +39,7 @@ class ContactUsComponent extends React.Component {
           <figure className="article article-full-image image">
             <img
               className=""
-              src={require("./images/Home-Background-Image.jpg")}
+              src={require("./images/Contact-Us-Background.jpg")}
               // src="https://s2.best-wallpaper.net/wallpaper/1600x900/1807/Hong-Kong-house-architecture-channel-from-bottom-view_1600x900.jpg"
               width="100%"
               height="600"
@@ -52,7 +52,7 @@ class ContactUsComponent extends React.Component {
               marginTop: "50px",
               fontSize: "1.1rem",
               textAlign: "left",
-              padding: "0px 50px 0px 150px",
+              padding: "0px 50px 0px 50px",
             }}
           >
             <p>

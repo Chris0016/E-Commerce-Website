@@ -1,16 +1,23 @@
 import React, { Component } from "react";
 import ProductService from "../../services/ProductService";
 import SideBarComponent from "./SideBarComponent";
+import { CartState } from "../../context/Context";
+import { Link } from "react-router-dom";
+
 //Dynamic Rendering -> look at employee service for referencE
 class ProductGridComponent extends Component {
   constructor(props) {
     super(props);
+
+    const windowUrl = window.location.pathname.substring(1);
+    console.log("window url: ", windowUrl);
+
     this.state = {
-      category: this.props.match.params.category,
+      category: windowUrl.substring(windowUrl.indexOf("/") + 1), //Please fix me, I am vulnerable to SQL Injection
       products: [],
     };
+    console.log(this.state.category);
 
-    console.log(props);
     this.handleShopButtonClick = this.handleShopButtonClick.bind(this);
   }
   componentDidMount() {
@@ -21,6 +28,7 @@ class ProductGridComponent extends Component {
   handleShopButtonClick(productId) {
     this.props.history.push(`/product/${productId}`);
   }
+  onAddClick() {}
 
   render() {
     return (
@@ -46,27 +54,29 @@ class ProductGridComponent extends Component {
                     <span className="text-success">${product.price}</span>
                   </div>
                   <div>
-                    <button
-                      className="btn btn-outline-dark flex-shrink-0"
-                      type="button"
-                      style={{ marginLeft: "10px" }}
-                      onClick={() => this.handleShopButtonClick(product.id)}
-                    >
-                      <i
-                        className="bi-bag-fill me-1"
-                        style={{ marginRight: "4px" }}
-                      ></i>
-                      Buy Now
-                    </button>
-                    <button
-                      className="btn btn-outline-dark flex-shrink-0"
-                      type="button"
-                      style={{ marginLeft: "10px" }}
-                      onClick={() => this.handleShopButtonClick(product.id)}
-                    >
-                      <i className=""></i>
-                      View
-                    </button>
+                    <Link to={`/product/${product.id}`}>
+                      <button
+                        className="btn btn-outline-dark flex-shrink-0"
+                        type="button"
+                        style={{ marginLeft: "10px" }}
+                      >
+                        <i
+                          className="bi-bag-fill me-1"
+                          style={{ marginRight: "4px" }}
+                        ></i>
+                        Buy Now
+                      </button>
+                    </Link>
+                    <Link to={`/product/${product.id}`}>
+                      <button
+                        className="btn btn-outline-dark flex-shrink-0"
+                        type="button"
+                        style={{ marginLeft: "10px" }}
+                      >
+                        <i className=""></i>
+                        View
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>

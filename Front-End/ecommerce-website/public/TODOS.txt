@@ -1,5 +1,5 @@
-Sidebar Active Page(update blue thing)
- 
+Shoppping Cart Functionality
+    Persistent Shopping Cart-> use local storage. 
 
 Table:
     Categories:

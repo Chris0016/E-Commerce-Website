@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+
 class NavBarComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -28,28 +30,41 @@ class NavBarComponent extends React.Component {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <a className="nav-link" href="/products/Computers">
-                All
-              </a>
-            </li>
-
-            <li className="nav-item">
-              <a className="nav-link" href="/about-us">
-                About Us
-              </a>
-            </li>
-
-            <li className="nav-item">
-              <a className="nav-link" href="/contact">
-                Contact
-              </a>
-            </li>
-            <li className="nav-item">
+            <Link to="/products/Computers">
+              <li className="nav-item">
+                {/* href="/products/Computers" */}
+                <div className="nav-link" color="black">
+                  All
+                </div>
+              </li>
+            </Link>
+            <Link to="/cart">
+              <li className="nav-item">
+                <div className="nav-link" color="black">
+                  <AiOutlineShoppingCart color="black" fontSize="25px" />
+                </div>
+              </li>
+            </Link>
+            <Link to="/about-us">
+              <li className="nav-item">
+                <div className="nav-link" color="black">
+                  About Us
+                </div>
+              </li>
+            </Link>
+            <Link to="/contact">
+              <li className="nav-item">
+                <div className="nav-link" color="black">
+                  Contact
+                </div>
+              </li>
+            </Link>
+            {/* <li className="nav-item">
               <a className="nav-link disabled" href="#">
                 Disabled
               </a>
             </li>
+*/}
           </ul>
           <form className="form-inline my-2 my-lg-0">
             <input

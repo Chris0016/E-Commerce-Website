@@ -1,17 +1,22 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import ProductService from "../services/ProductService";
 class ProductViewComponent extends React.Component {
   constructor(props) {
     super(props);
 
+    const windowUrl = window.location.pathname.substring(1);
+    console.log("window url for product: ", windowUrl);
+
     this.state = {
       //id: this.props.match.params.id,
-      id: this.props.match.params.id,
+      id: windowUrl.substring(windowUrl.indexOf("/") + 1), //Please fix me, I am vulnerable to SQL Injection
       name: "",
       price: 0,
       vendor: "holder vendor",
       description: "",
     };
+    console.log("ID: ", this.state.id);
   }
 
   componentDidMount() {
@@ -58,7 +63,7 @@ class ProductViewComponent extends React.Component {
                     className="form-control text-center me-3"
                     id="inputQuantity"
                     type="num"
-                    value="1"
+                    // value="1" Uncomment me please
                     style={{ maxWidth: "3rem" }}
                   />
                   <button
@@ -73,6 +78,14 @@ class ProductViewComponent extends React.Component {
                     className="btn btn-outline-dark flex-shrink-0"
                     type="button"
                     style={{ marginLeft: "10px" }}
+                    onClick={() =>
+                      this.props.onAddToCart(
+                        this.state.id,
+                        this.state.name,
+                        this.state.description,
+                        this.state.price
+                      )
+                    }
                   >
                     <i className="bi-cart-fill me-1"></i>
                     Add to cart
@@ -343,7 +356,7 @@ class ProductViewComponent extends React.Component {
                           type="text"
                           name="Enter Name"
                           placeholder="Enter Name"
-                          id=""
+                          // id=""
                         />
                       </div>
                       <div className="col-md-6">
@@ -351,7 +364,7 @@ class ProductViewComponent extends React.Component {
                           type="text"
                           name="Enter Email"
                           placeholder="Enter Email"
-                          id=""
+                          // id=""
                         />
                       </div>
                       <div className="col-md-12">
