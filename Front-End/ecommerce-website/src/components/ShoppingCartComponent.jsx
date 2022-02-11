@@ -4,17 +4,44 @@ import { useHistory } from "react-router-dom";
 class ShoppingCartComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      cart: [],
+    };
+    console.log("Hello Im the constructor");
   }
+  static getDerivedStateFromProps(props, state) {
+    console.log("Hello Im the dState Func");
 
+    const sCart = localStorage.getItem("cart");
+    const parsedCart = JSON.parse(sCart);
+
+    if (sCart == null) {
+      return { cart: [] };
+    } else {
+      console.log("cart String mount on shopping cart: ", sCart);
+      console.log("cart Object at mount on shopping cart: ", parsedCart);
+      // this.setState(
+      //   // cart: [...parsedCart, parsedCart],
+      //   (state, props) => {
+      //     return {
+      //       cart: [{ hey: "hello" }],
+      //     };
+      //   }
+      // );
+
+      return { cart: parsedCart };
+      console.log("After appending", this.state.cart);
+    }
+  }
   // handleOnBackClick() {
-  //   this.props.history.back();
+  //   this.state.history.back();
   //                 Something like this  onClick={() => this.handleOnBackClick()}
 
   // }
+
   render() {
-    // const { goBack } = this.props.navigation();
-    console.log("Shopping Cart Page: ", this.props.cart);
+    // const { goBack } = this.state.navigation();
+    console.log("Shopping Cart Array at Render(): ", this.state.cart);
     return (
       <div className="container mt-5 p-3 rounded cart">
         <div className="row no-gutters">
@@ -33,7 +60,7 @@ class ShoppingCartComponent extends Component {
               <h6 className="mb-0">Shopping cart</h6>
               <div className="d-flex justify-content-between">
                 <span>
-                  You have {this.props.cart.length} items in your cart
+                  You have {this.state.cart.length} items in your cart
                 </span>
                 <div className="d-flex flex-row align-items-center">
                   <span className="text-black-50">Sort by:</span>
@@ -44,7 +71,7 @@ class ShoppingCartComponent extends Component {
                 </div>
               </div>
 
-              {this.props.cart.map((product) => (
+              {this.state.cart.map((product) => (
                 <div className="d-flex justify-content-between align-items-center mt-3 p-2 items rounded">
                   <div className="d-flex flex-row">
                     <img

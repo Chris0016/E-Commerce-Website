@@ -16,12 +16,37 @@ class App extends Component {
   userData;
   constructor(props) {
     super(props);
+
     this.state = {
       cart: [],
     };
-    // this.handleAddToCart = this.handleAddToCart.bind(this);
-  }
 
+    this.handleAddToCart = this.handleAddToCart.bind(this);
+  }
+  // static getDerivedStateFromProps(props, state) {
+  //   console.log("Hello Im the dState Func");
+
+  //   const sCart = localStorage.getItem("cart");
+  //   const parsedCart = JSON.parse(sCart);
+
+  //   if (sCart == null) {
+  //     return { cart: [] };
+  //   } else {
+  //     console.log("cart String mount on shopping cart: ", sCart);
+  //     console.log("cart Object at mount on shopping cart: ", parsedCart);
+  //     // this.setState(
+  //     //   // cart: [...parsedCart, parsedCart],
+  //     //   (state, props) => {
+  //     //     return {
+  //     //       cart: [{ hey: "hello" }],
+  //     //     };
+  //     //   }
+  //     // );
+
+  //     return { cart: parsedCart };
+  //     console.log("After appending", this.state.cart);
+  //   }
+  // }
   handleAddToCart = (productId, prodName, description, price) => {
     console.log(" Handle Add to Cart Called ", productId);
 
@@ -59,6 +84,7 @@ class App extends Component {
         }
       );
     }
+    localStorage.setItem("cart", JSON.stringify(this.state.cart));
   };
 
   indexOfProduct(productId) {
@@ -67,30 +93,6 @@ class App extends Component {
     }
     return -1;
   }
-
-  // componentDidMount() {
-  //   this.userData = JSON.parse(localStorage.getItem("cart"));
-
-  //   if (localStorage.getItem("cart")) {
-  //     console.log("Found in local Storage");
-  //     this.setState(
-  //       {
-  //         cart: this.userData.cart,
-  //       },
-  //       () => {
-  //         console.log("cart state at mount: ", this.state.cart);
-  //       }
-  //     );
-  //   } else {
-  //     this.setState({
-  //       cart: [],
-  //     });
-  //   }
-  // }
-
-  // componentWillUpdate(nextProps, nextState) {
-  //   localStorage.setItem("cart", JSON.stringify(nextState));
-  // }
 
   render() {
     return (
@@ -112,7 +114,7 @@ class App extends Component {
                 <ProductGridComponent />
               </Route>
               <Route exact path="/cart">
-                <ShoppingCartComponent cart={this.state.cart} />
+                <ShoppingCartComponent />
               </Route>
               <Route exact path="/product/:id">
                 {/*onAddToCart={this.handleAddToCart} */}
