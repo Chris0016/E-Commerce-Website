@@ -30,7 +30,6 @@ class ShoppingCartComponent extends Component {
       // );
 
       return { cart: parsedCart };
-      console.log("After appending", this.state.cart);
     }
   }
   // handleOnBackClick() {

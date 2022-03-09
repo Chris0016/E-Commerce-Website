@@ -23,6 +23,7 @@ class App extends Component {
 
     this.handleAddToCart = this.handleAddToCart.bind(this);
   }
+
   // static getDerivedStateFromProps(props, state) {
   //   console.log("Hello Im the dState Func");
 
@@ -47,9 +48,24 @@ class App extends Component {
   //     console.log("After appending", this.state.cart);
   //   }
   // }
+
+  componentDidMount() {
+    const sCart = localStorage.getItem("cart");
+    const parsedCart = JSON.parse(sCart);
+
+    if (sCart == null) {
+      this.setState({ cart: [] });
+    } else {
+      console.log("cart String mount on shopping cart: ", sCart);
+      console.log("cart Object at mount on shopping cart: ", parsedCart);
+      this.setState({
+        cart: parsedCart,
+      });
+    }
+  }
   handleAddToCart = (productId, prodName, description, price) => {
     console.log(" Handle Add to Cart Called ", productId);
-
+    console.log("->cart state: ", this.state.cart);
     const holder = {
       productId,
       quantity: 1,
@@ -59,14 +75,16 @@ class App extends Component {
     };
 
     const idx = this.indexOfProduct(productId);
-    // Product does not exist in cart
+
     if (idx == -1) {
+      // Product does not exist in cart
       this.setState(
         {
           cart: [...this.state.cart, holder],
         },
         () => {
           console.log("Updated Cart: ", this.state.cart);
+          localStorage.setItem("cart", JSON.stringify(this.state.cart));
         }
       );
     } else {
@@ -81,10 +99,11 @@ class App extends Component {
         },
         () => {
           console.log("Updated Cart: ", this.state.cart);
+          localStorage.setItem("cart", JSON.stringify(this.state.cart));
         }
       );
     }
-    localStorage.setItem("cart", JSON.stringify(this.state.cart));
+    // localStorage.setItem("cart", JSON.stringify(this.state.cart));
   };
 
   indexOfProduct(productId) {
