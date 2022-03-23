@@ -9,29 +9,41 @@ class ShoppingCartComponent extends Component {
     };
     console.log("Hello Im the constructor");
   }
-  static getDerivedStateFromProps(props, state) {
-    console.log("Hello Im the dState Func");
 
+  // componentDidMount() {
+  //   const sCart = localStorage.getItem("cart");
+  //   const parsedCart = JSON.parse(sCart);
+  //   if (sCart == null) {
+  //     return { cart: [] };
+  //   } else {
+  //     this.setState({
+  //       // cart: [...parsedCart, parsedCart],
+  //       cart: parsedCart,
+  //     });
+  //   }
+  // }
+
+  static getDerivedStateFromProps(props, state) {
     const sCart = localStorage.getItem("cart");
     const parsedCart = JSON.parse(sCart);
 
     if (sCart == null) {
       return { cart: [] };
     } else {
-      console.log("cart String mount on shopping cart: ", sCart);
-      console.log("cart Object at mount on shopping cart: ", parsedCart);
+      // console.log("cart String mount on shopping cart: ", sCart);
+      // console.log("cart Object at mount on shopping cart: ", parsedCart);
       // this.setState(
-      //   // cart: [...parsedCart, parsedCart],
+      //   cart: [...parsedCart, parsedCart],
       //   (state, props) => {
       //     return {
       //       cart: [{ hey: "hello" }],
       //     };
       //   }
       // );
-
-      return { cart: parsedCart };
+      return { cart: props.cart };
     }
   }
+
   // handleOnBackClick() {
   //   this.state.history.back();
   //                 Something like this  onClick={() => this.handleOnBackClick()}
@@ -49,9 +61,13 @@ class ShoppingCartComponent extends Component {
               <div className="d-flex flex-row align-items-center">
                 <i className="fa fa-arrow"></i>
 
-                <button /* onClick={history.back} */>
+                <button
+                  class="btn btn-outline-dark flex-shrink-0" /* onClick={history.back} */
+                >
                   <span className="ml-2">
-                    <a style={{ color: "black" }}>Continue Shopping</a>
+                    <a href="/products/Computers" style={{ color: "black" }}>
+                      Continue Shopping
+                    </a>
                   </span>
                 </button>
               </div>
@@ -91,6 +107,32 @@ class ShoppingCartComponent extends Component {
                     <span className="d-block ml-5 font-weight-bold">
                       ${product.price}
                     </span>
+                    <div style={{ marginLeft: "5px" }}>
+                      <button
+                        className="btn btn-outline-dark flex-shrink-0"
+                        type="button"
+                        onClick={() =>
+                          this.props.onAddToCart(
+                            product.productId,
+                            product.prodName,
+                            product.description,
+                            product.price
+                          )
+                        }
+                      >
+                        +
+                      </button>
+                      <button
+                        className="btn btn-outline-dark flex-shrink-0"
+                        type="button"
+                        style="margin-left:5px"
+                        onClick={() =>
+                          this.props.onDeleteFromCart(product.productId)
+                        }
+                      >
+                        -
+                      </button>
+                    </div>
                     <i className="fa fa-trash-o ml-3 text-black-50"></i>
                   </div>
                 </div>

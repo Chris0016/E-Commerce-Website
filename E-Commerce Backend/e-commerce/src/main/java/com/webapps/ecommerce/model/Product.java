@@ -43,6 +43,8 @@ public class Product {
         this.vendorName = vendorName;
     }
 
+    /* Getters and Setters ... */
+
     public Product() {
     }
 

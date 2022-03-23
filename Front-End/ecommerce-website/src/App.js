@@ -56,16 +56,15 @@ class App extends Component {
     if (sCart == null) {
       this.setState({ cart: [] });
     } else {
-      console.log("cart String mount on shopping cart: ", sCart);
-      console.log("cart Object at mount on shopping cart: ", parsedCart);
+      // console.log("cart String mount on shopping cart: ", sCart);
+      // console.log("cart Object at mount on shopping cart: ", parsedCart);
       this.setState({
         cart: parsedCart,
       });
     }
   }
   handleAddToCart = (productId, prodName, description, price) => {
-    console.log(" Handle Add to Cart Called ", productId);
-    console.log("->cart state: ", this.state.cart);
+    console.log(" Handle Add to Cart Called for prodID:", productId);
     const holder = {
       productId,
       quantity: 1,
@@ -83,7 +82,7 @@ class App extends Component {
           cart: [...this.state.cart, holder],
         },
         () => {
-          console.log("Updated Cart: ", this.state.cart);
+          console.log("Updated Cart on App.js: ", this.state.cart);
           localStorage.setItem("cart", JSON.stringify(this.state.cart));
         }
       );
@@ -98,12 +97,51 @@ class App extends Component {
           cart: newArray,
         },
         () => {
-          console.log("Updated Cart: ", this.state.cart);
+          console.log("Updated Cart on App.js: ", this.state.cart);
           localStorage.setItem("cart", JSON.stringify(this.state.cart));
         }
       );
     }
+
     // localStorage.setItem("cart", JSON.stringify(this.state.cart));
+  };
+
+  handleDeleteFromCart = (productId) => {
+    console.log("handleDeleteFromCart() called for Id: ", productId);
+    const idx = this.indexOfProduct(productId);
+    if (idx == -1) {
+      console.log("Cannot Delete Product not found in cart");
+      return;
+    }
+    console.log(" Product found in cart");
+    let newArray = [...this.state.cart];
+    if (this.state.cart[idx].quantity == 1) {
+      //Remove element from the cart array and local storage
+      newArray.splice(idx, 1);
+      this.setState(
+        {
+          cart: newArray,
+        },
+        () => {
+          console.log("Updated Cart on App.js: ", this.state.cart);
+          localStorage.setItem("cart", JSON.stringify(this.state.cart));
+        }
+      );
+    } else {
+      newArray[idx] = {
+        ...newArray[idx],
+        quantity: newArray[idx].quantity - 1,
+      };
+      this.setState(
+        {
+          cart: newArray,
+        },
+        () => {
+          console.log("Updated Cart on App.js: ", this.state.cart);
+          localStorage.setItem("cart", JSON.stringify(this.state.cart));
+        }
+      );
+    }
   };
 
   indexOfProduct(productId) {
@@ -116,9 +154,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <div className="container-fluid">
-          <NavBarComponent />
-        </div> */}
         <>
           <Router>
             <div className="container-fluid">
@@ -126,18 +161,22 @@ class App extends Component {
             </div>
 
             <Switch>
-              <Route exact path="/sidebar">
-                <SideBarComponent />
-              </Route>
               <Route exact path="/products/:category">
                 <ProductGridComponent />
               </Route>
               <Route exact path="/cart">
-                <ShoppingCartComponent />
+                <ShoppingCartComponent
+                  onAddToCart={this.handleAddToCart}
+                  onDeleteFromCart={this.handleDeleteFromCart}
+                  {...this.state}
+                />
               </Route>
               <Route exact path="/product/:id">
                 {/*onAddToCart={this.handleAddToCart} */}
-                <ProductViewComponent onAddToCart={this.handleAddToCart} />
+                <ProductViewComponent
+                  onAddToCart={this.handleAddToCart}
+                  onDeleteFromCart={this.handleDeleteFromCart}
+                />
               </Route>
 
               <Route exact path="/contact">
