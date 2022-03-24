@@ -30,7 +30,7 @@ public class BatchLoader {
 		
 		
 		}catch(Exception e) {
-			System.out.println("Erro while loading file :");
+			System.out.println("Error while loading file :");
 			e.printStackTrace();
 			System.exit(1);
 		}
